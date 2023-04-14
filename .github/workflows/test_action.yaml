@@ -1,21 +1,21 @@
 # .github/workflows/test_action.yaml
-name: Test Action
-on: [push]
+# name: Test Action
+# on: [push]
 
-jobs:
-  register-content:
-    runs-on: ubuntu-latest
-    name: Register content
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Register content
-        id: register
-        uses: front-matter/content-registration@v0.9.0
-        with:
-          url: "https://blog.front-matter.io/posts/feedback-for-blog-publishers/"
-          depositor: ${{ secrets.CROSSREF_DEPOSITOR_NAME }}
-          email: ${{ secrets.CROSSREF_DEPOSITOR_EMAIL }}
-          registrant: ${{ secrets.CROSSREF_REGISTRANT }}
-          crossref-username: ${{ secrets.CROSSREF_USERNAME_WITH_ROLE }}
-          crossref-password: ${{ secrets.CROSSREF_PASSWORD }}
+# jobs:
+#   register-content:
+#     runs-on: ubuntu-latest
+#     name: Register content
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       - name: Register content
+#         id: register
+#         uses: front-matter/content-registration@v0.9.0
+#         with:
+#           url: "https://blog.front-matter.io/posts/feedback-for-blog-publishers/"
+#           depositor: ${{ secrets.CROSSREF_DEPOSITOR_NAME }}
+#           email: ${{ secrets.CROSSREF_DEPOSITOR_EMAIL }}
+#           registrant: ${{ secrets.CROSSREF_REGISTRANT }}
+#           crossref-username: ${{ secrets.CROSSREF_USERNAME_WITH_ROLE }}
+#           crossref-password: ${{ secrets.CROSSREF_PASSWORD }}
