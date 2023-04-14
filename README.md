@@ -1,4 +1,4 @@
-[![Build](https://github.com/front-matter/content-registration/actions/workflows/build.yml/badge.svg)](https://github.com/front-matter/commonmeta-py/actions/workflows/test_action.yaml)
+[![Build](https://github.com/front-matter/content-registration/actions/workflows/test_action.yaml/badge.svg)](https://github.com/front-matter/content-registration/actions/workflows/test_action.yaml)
 ![GitHub](https://img.shields.io/github/license/front-matter/content-registration?logo=MIT)
 
 # Crossref Content Registration Action
