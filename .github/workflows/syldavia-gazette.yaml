@@ -1,0 +1,28 @@
+name: Conntent Registration Syldavia Gazette
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Slug of blog post'     
+        required: true
+        default: 'blog-post-slug'
+  repository_dispatch:
+    types:
+      - post-update
+jobs:
+  register-content:
+    runs-on: ubuntu-latest
+    name: Register content
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Register content
+        id: register
+        uses: front-matter/content-registration@v0.9.1
+        with:
+          url: "https://syldavia-gazette.org/${{ github.event.inputs.slug }}"
+          depositor: ${{ secrets.CROSSREF_DEPOSITOR_NAME }}
+          email: ${{ secrets.CROSSREF_DEPOSITOR_EMAIL }}
+          registrant: ${{ secrets.CROSSREF_REGISTRANT }}
+          crossref-username: ${{ secrets.CROSSREF_USERNAME_WITH_ROLE }}
+          crossref-password: ${{ secrets.CROSSREF_PASSWORD }}
