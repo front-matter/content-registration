@@ -21,5 +21,3 @@ jobs:
           registrant: ${{ secrets.CROSSREF_REGISTRANT }}
           crossref-username: ${{ secrets.CROSSREF_USERNAME_WITH_ROLE }}
           crossref-password: ${{ secrets.CROSSREF_PASSWORD }}
-      - name: Print the status code for registering content 
-        run: echo "${{ steps.register.outputs.* }}"
