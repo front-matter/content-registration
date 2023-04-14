@@ -28,10 +28,12 @@ runs:
         gem install bundler
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
+      shell: bash
     - name: Generate XML
       run: |
         mkdir -p upload
-        bundle exec commonmeta {{ inputs.url }} -t crossref_xml > upload/temp
+        bundle exec commonmeta {{ inputs.url }} --depositor {{ inputs.depositor }} --email {{ inputs.email }} --registrant {{ inputs.registrant }} -t crossref_xml > upload/temp
+      shell: bash
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
@@ -42,7 +44,10 @@ runs:
       with:
         name: uploads
     - name: Register content with the Crossref API
+      env:
+        CROSSREF_USERNAME: ${{ inputs.crossref-username }}
+        CROSSREF_PASSWORD: ${{ inputs.crossref-password }}
       uses: wei/curl@v1
       id: register
       with:
-        args: -X POST -F "operation=doMDUpload" -F "login_id=${{ secrets.CROSSREF_USERNAME_WITH_ROLE }}" -F "login_passwd=${{ secrets.CROSSREF_PASSWORD }}" -F "fname=@upload/temp https://doi.crossref.org/servlet/deposit
+        args: -X POST -F "operation=doMDUpload" -F "login_id=${{ CROSSREF_USERNAME }}" -F "login_passwd=${{ CROSSREF_PASSWORD }}" -F "fname=@upload/temp https://doi.crossref.org/servlet/deposit
