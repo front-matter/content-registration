@@ -6,7 +6,7 @@ The action uses the [commonmeta-ruby](https://rubygems.org/gems/commonmeta-ruby)
 
 ### Requirements
 
-* A Crossref member account to register content
+* A [Crossref member account](https://www.crossref.org/membership/) to register content
 * A URL pointing at content to be registered with Crossref
 * The desired DOI embedded as `canonical_url` in the content at the target URL
 * Metadata embedded in the content at the target URL either as schema.org JSON-LD and/or HTML meta tags
@@ -28,5 +28,5 @@ The `url` input should be set via an input form ([workflow_dispatch](https://doc
 
 ### License
 
-**content-registration** is released under the [MIT License](https://github.com/front-matter/content-registration/blob/main/LICENSE).
+**Crossref Content Registration Action** is released under the [MIT License](https://github.com/front-matter/content-registration/blob/main/LICENSE).
 
