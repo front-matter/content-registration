@@ -5,13 +5,13 @@ inputs:
     description: "URL of the content you want to register"
     required: true
   depositor:
-    description: "Depositor name"
+    description: "Name of the organization registering the DOIs"
     required: true
   email:
-    description: "Depositor email"
+    description: "e-mail address to which batch success and/or error messages are sent"
     required: true
   registrant:
-    description: "Registrant name"
+    description: "The organization responsible for the information being registered"
     required: true
   crossref-username:
     description: "Crossref username"
@@ -47,7 +47,7 @@ runs:
     - name: Generate XML
       run: |
         mkdir -p upload
-        bundle exec commonmeta ${{ inputs.url }} --depositor ${{ inputs.depositor }} --email ${{ inputs.email }} --registrant ${{ inputs.registrant }} -t crossref_xml > upload/temp
+        bundle exec commonmeta ${{ inputs.url }} --depositor=${{ inputs.depositor }} --email=${{ inputs.email }} --registrant=${{ inputs.registrant }} -t crossref_xml > upload/temp
       shell: bash
     - name: Upload
       uses: actions/upload-artifact@v2

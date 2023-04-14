@@ -13,13 +13,13 @@ jobs:
         id: register
         uses: ./ # Uses an action in the root directory
         # or use a released GitHub Action
-        # uses: shipyard/github-action/fetch-shipyard-env@1.0.0
+        # uses: front-matter/github-action/content-registration@1.0.0
         with:
           url: "https://blog.front-matter.io/posts/feedback-for-blog-publishers/"
           depositor: ${{ secrets.CROSSREF_DEPOSITOR_NAME }}
           email: ${{ secrets.CROSSREF_DEPOSITOR_EMAIL }}
           registrant: ${{ secrets.CROSSREF_REGISTRANT }}
-          crossref-username: ${{ secrets.CROSSREF_USERNAME }}
+          crossref-username: ${{ secrets.CROSSREF_USERNAME_WITH_ROLE }}
           crossref-password: ${{ secrets.CROSSREF_PASSWORD }}
       - name: Print the registered DOI
         run: echo "${{ steps.register.outputs.doi }}"
