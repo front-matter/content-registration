@@ -47,19 +47,19 @@ runs:
     - name: Generate XML
       run: |
         mkdir -p upload
-        bundle exec commonmeta ${{ inputs.url }} --depositor "${{ inputs.depositor }}" --email "${{ inputs.email }}" --registrant "${{ inputs.registrant }}" -t crossref_xml > upload/temp
+        bundle exec commonmeta ${{ inputs.url }} --depositor "${{ inputs.depositor }}" --email "${{ inputs.email }}" --registrant "${{ inputs.registrant }}" -t crossref_xml > upload/temp.xml
       shell: bash
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: uploads
-        path: upload/temp
+        path: upload/temp.xml
     - name: Download
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: uploads
     - name: Register content with the Crossref API
       uses: wei/curl@v1
       id: register
       with:
-        args: -X POST -F "operation=doMDUpload" -F "login_id=${{ inputs.crossref-username }}" -F "login_passwd=${{ inputs.crossref-password }}" -F "fname=@upload/temp https://doi.crossref.org/servlet/deposit -s -o /dev/null -w "%{http_code}"
+        args: -X POST -F "operation=doMDUpload" -F "login_id=${{ inputs.crossref-username }}" -F "login_passwd=${{ inputs.crossref-password }}" -F "fname=@upload/temp.xml https://doi.crossref.org/servlet/deposit -s -o /dev/null -w "%{http_code}" >> $GITHUB_OUTPUT
