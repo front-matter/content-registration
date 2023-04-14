@@ -1,7 +1,14 @@
-# .github/workflows/test_action.yaml
-name: Test Action
-on: [push]
-
+name: Conntent Registration Front Matter
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Slug of blog post'     
+        required: true
+        default: 'blog-post-slug'
+  repository_dispatch:
+    types:
+      - post-update
 jobs:
   register-content:
     runs-on: ubuntu-latest
@@ -11,9 +18,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Register content
         id: register
-        uses: front-matter/content-registration@v0.9.0
+        uses: front-matter/content-registration@v0.9.1
         with:
-          url: "https://blog.front-matter.io/posts/feedback-for-blog-publishers/"
+          url: "https://blog.front-matter.io/posts/${{ github.event.inputs.slug }}"
           depositor: ${{ secrets.CROSSREF_DEPOSITOR_NAME }}
           email: ${{ secrets.CROSSREF_DEPOSITOR_EMAIL }}
           registrant: ${{ secrets.CROSSREF_REGISTRANT }}
