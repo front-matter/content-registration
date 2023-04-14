@@ -44,10 +44,7 @@ runs:
       with:
         name: uploads
     - name: Register content with the Crossref API
-      env:
-        CROSSREF_USERNAME: ${{ inputs.crossref-username }}
-        CROSSREF_PASSWORD: ${{ inputs.crossref-password }}
       uses: wei/curl@v1
       id: register
       with:
-        args: -X POST -F "operation=doMDUpload" -F "login_id=${{ CROSSREF_USERNAME }}" -F "login_passwd=${{ CROSSREF_PASSWORD }}" -F "fname=@upload/temp https://doi.crossref.org/servlet/deposit
+        args: -X POST -F "operation=doMDUpload" -F "login_id=${{ inputs.crossref-username }}" -F "login_passwd=${{ inputs.crossref-password }}" -F "fname=@upload/temp https://doi.crossref.org/servlet/deposit
