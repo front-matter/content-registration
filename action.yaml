@@ -27,8 +27,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v2
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -47,7 +47,7 @@ runs:
     - name: Generate XML
       run: |
         mkdir -p upload
-        bundle exec commonmeta ${{ inputs.url }} --depositor=${{ inputs.depositor }} --email=${{ inputs.email }} --registrant=${{ inputs.registrant }} -t crossref_xml > upload/temp
+        commonmeta ${{ inputs.url }} --depositor=${{ inputs.depositor }} --email=${{ inputs.email }} --registrant=${{ inputs.registrant }} -t crossref_xml > upload/temp
       shell: bash
     - name: Upload
       uses: actions/upload-artifact@v2
