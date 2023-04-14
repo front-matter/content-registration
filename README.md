@@ -4,9 +4,9 @@ This GitHub Action uses the [Crossref Depoitor API](https://www.crossref.org/doc
 
 ### Required environment variables
 
-* `CROSSREF_USERNAME_WITH_ROLE` - Your Crossref username
-* `CROSSREF_PASSWORD` - Your Crossref password
-* `CROSSREF_DEPOSITOR_NAME` - Your Crossref API user name
-* `CROSSREF_DEPOSITOR_EMAIL` - Your Crossref API email address
-* `CROSSREF_REGISTRANT` - Your Crossref API password
+* `CROSSREF_USERNAME_WITH_ROLE` - Crossref member username
+* `CROSSREF_PASSWORD` - Crossref member password
+* `CROSSREF_DEPOSITOR_NAME` - Name of the organization registering the DOIs.
+* `CROSSREF_DEPOSITOR_EMAIL` - e-mail address to which batch success and/or error messages are sent.
+* `CROSSREF_REGISTRANT` - The organization responsible for the information being registered.
 
