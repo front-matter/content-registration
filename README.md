@@ -1,3 +1,6 @@
+[![Build](https://github.com/front-matter/content-registration/actions/workflows/build.yml/badge.svg)](https://github.com/front-matter/commonmeta-py/actions/workflows/test_action.yaml)
+![GitHub](https://img.shields.io/github/license/front-matter/content-registration?logo=MIT)
+
 # Crossref Content Registration Action
 
 This GitHub Action uses the [Crossref Depositor API](https://www.crossref.org/documentation/register-maintain-records/direct-deposit-xml/https-post/) to register content with Crossref. With the help of the [commonmeta-ruby](https://rubygems.org/gems/commonmeta-ruby) the action fetches the DOI and required metadata from the URL provided, and registers a Crossref DOI.
