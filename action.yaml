@@ -1,5 +1,8 @@
 name: "Crossref Register Content Action"
 description: "GitHub Action to register content with Crossref in your GitHub Action Workflow."
+branding:
+  icon: 'archive'
+  color: 'green'
 inputs:
   url:
     description: "URL of the content you want to register"
