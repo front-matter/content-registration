@@ -2,7 +2,22 @@ name: "Crossref Register Content Action"
 description: "GitHub Action to register content with Crossref in your GitHub Action Workflow."
 inputs:
   url:
-    description: "Enter the URL of the content you want to register"
+    description: "URL of the content you want to register"
+    required: true
+  depositor:
+    description: "Depositor name"
+    required: true
+  email:
+    description: "Depositor email"
+    required: true
+  registrant:
+    description: "Registrant name"
+    required: true
+  crossref-username:
+    description: "Crossref username"
+    required: true
+  crossref-password:
+    description: "Crossref password"
     required: true
 outputs:
   doi:
