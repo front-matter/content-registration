@@ -1,0 +1,25 @@
+# .github/workflows/test_action.yaml
+name: Test Action
+on: [push]
+
+jobs:
+  register-content:
+    runs-on: ubuntu-latest
+    env:
+      CROSSREF_DEPOSITOR_NAME: ${{ secrets.CROSSREF_DEPOSITOR_NAME }}
+      CROSSREF_DEPOSITOR_EMAIL: ${{ secrets.CROSSREF_DEPOSITOR_EMAIL }}
+      CROSSREF_REGISTRANT: ${{ secrets.CROSSREF_REGISTRANT }}
+      
+    name: Register content
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Register content
+        id: register
+        uses: ./ # Uses an action in the root directory
+        # or use a released GitHub Action
+        # uses: shipyard/github-action/fetch-shipyard-env@1.0.0
+        with:
+          url: "https://blog.front-matter.io/posts/feedback-for-blog-publishers/"
+      - name: Print the registered DOI
+        run: echo "${{ steps.register.outputs.doi }}"
